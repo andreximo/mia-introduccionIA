@@ -1,1 +1,16 @@
 Introduccion_a_la_IA.pdf
+.venv
+agents
+wumpus                                                               
+01_wumpus_world.py                                                   
+02_simple_reflex_agent.py                                            
+03_model_based_agent.py                                              
+04_goal_based_agent.py                                               
+05_utility_based_agent.py                                            
+06_learning_agent.py                                                 
+explanation.md                                                       
+README.md                                                            
+requirements.txt
+classic_4x4.yaml
+classic_6x6.yaml
+easy_4x4.yaml
