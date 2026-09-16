@@ -1,5 +1,6 @@
 Introduccion_a_la_IA.pdf
 .venv
+.gitignore
 agents
 wumpus                                                               
 01_wumpus_world.py                                                   
@@ -14,3 +15,4 @@ requirements.txt
 classic_4x4.yaml
 classic_6x6.yaml
 easy_4x4.yaml
+03_Busqueda_No_Informada/ejercicio_1/notas.txt
