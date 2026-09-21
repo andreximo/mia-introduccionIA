@@ -41,25 +41,51 @@ Correr ambas notebooks en **Google Colab** con la arquitectura original,
 
 1. Enlaces de Colab (o archivos `.ipynb`) de las dos notebooks **modificadas**,
    con las corridas originales y las profundas.
+  - Enlaces a los Notebook originales: https://github.com/andreximo/mia-introduccionIA/tree/main/05_Perceptr%C3%B3n_Multicapa/Notebooks_Originales
+  - Enlaces a los Notebook con las corridas profundas.
 2. Capturas: curvas de error/pérdida de las cuatro corridas y los dos
    `model.summary()` de Keras.
+  - **Perceptron Multicapa**
+    - _Original_
+      ![PlanoCartesiano](./assets/R1.png)
+
+    - _Profundo_
+      ![PlanoCartesiano](./assets/R3.png)
+
+  - **Perceptron Multicapa con Keras**
+    - _Original_
+      ![PlanoCartesiano](./assets/R2.png)
+
+    - _Profundo_
+      ![PlanoCartesiano](./assets/R4.png)
+
+
 3. Un breve reporte (media página a una página) que responda:
    - ¿Bajar más el error al añadir dos capas, o se estancó / empeoró? ¿Igual
      en NumPy y en Keras?
+     En el caso del Perceptron Multicapa con NunPy, se observa que si bajo más el error al agregar dos capas más contra el original.
+     En cuanto a las Notebook con Keras, cuando se agregaron las dos capas a la red, se observa que empeoro el error y alcanzó su máximo desenso al rededor de la epoca 105.
    - ¿Las curvas de la notebook 01 y de Keras se parecen con la misma
      topología? Si no, ¿qué diferencias de implementación podrían explicarlo
      (orden de los datos, inicialización, vectorización, etc.)?
+     Las curvas de las Notebook implementada con Numpy y las implementadas con Keras, no parecen terner la misma totpología en las primeras parece que se detiene y luego comienzan a descender, mietras que las que están con Keras parecen más uniformes como si fueran una función logarítmica.
+     Dentro de las pruebas que realice para el data set de Iris, pude observar que cambian cuando normalice los datos, también observe que cambia si se actualizan todas las deltas y después se actualizan los pesos de la red. 
    - Con sigmoides apiladas y MSE, ¿tiene sentido que una red **más profunda**
      no aprenda mejor en Iris? Relaciónalo con lo que viste en las gráficas.
+     Si tiene sentido, ya que eso de debe al desvanecimiento de gradiente. Durante la retropropagación entre más capas tenga la red el error que actualiza los pesos será cada vez más pequeño, para el caso de nuestra red con 4 capas y la función sigmoide, el valor de la actualización de los pesos estaría en el orden de 0.0039.
+
 4. Evidencias de haber ejecutado en Colab (captura del entorno Colab o del
    menú Runtime).
+  - **Perceptron Multicapa**
+      - _Original_
+      ![PlanoCartesiano](./assets/R8.png)
 
-## Reto opcional
+      - _Profundo_
+      ![PlanoCartesiano](./assets/R7.png)
 
-- Repite la red profunda en Keras con **ReLU** en las capas ocultas y
-  **softmax** en la salida, y pérdida `categorical_crossentropy`. Compara con
-  la versión todo-sigmoide + MSE.
-- Cambia el número de neuronas de las capas ocultas (p. ej. \(4 \times 8 \times 8 \times 8 \times 3\))
-  y observa si Iris (150 ejemplos) se beneficia o se sobreajusta.
-- En la notebook 01, imprime el error cada 50 épocas en ambas topologías para
-  ver **cuándo** se aplana la curva.
+  - **Perceptron Multicapa con Keras**
+      - _Original_
+      ![PlanoCartesiano](./assets/R6.png)
+
+      - _Profundo_
+      ![PlanoCartesiano](./assets/R5.png)
