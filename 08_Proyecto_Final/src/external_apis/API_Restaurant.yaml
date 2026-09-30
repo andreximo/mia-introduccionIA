@@ -1,0 +1,205 @@
+openapi: 3.0.0
+info:
+  title: "comidaMIAAPI"
+  description: "comida MIAAPI"
+  version: "20260928013327"
+servers:
+  - url: https://sandbox10.gxapps.cloud/Id439a4e252e200e443e3dc87d04884cfd/Interfaz/comidaMIAAPI
+paths:
+  /ConsultarDiponibilidadMesas:
+    get:
+      tags:
+       - interfaz-comidamiaapi
+      operationId: "Interfaz.comidaMIAAPI.ConsultarDiponibilidadMesas"
+      summary: "ConsultarDiponibilidadMesas"
+      parameters:
+        - name: "Stdisponibilidadrequest"
+          in: query
+          description: "st Disponibilidad Request"
+          required: true
+          schema:
+            type: "string"
+            
+            
+            
+      
+      responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Backend.stDisponibilidadResponse"
+
+        "404":
+          description: "Not found"
+
+  /ReservarMesa:
+    post:
+      tags:
+       - interfaz-comidamiaapi
+      operationId: "Interfaz.comidaMIAAPI.ReservarMesa"
+      summary: "ReservarMesa"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReservarMesaInput"
+      
+      responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Backend.stReservacionResponse"
+
+        "404":
+          description: "Not found"
+
+components:
+  schemas:
+    ReservarMesaInput:
+      properties:
+        stReservacionRequest:
+          description: "st Reservacion Request"
+          $ref: "#/components/schemas/Backend.stReservacionRequest"
+
+    Backend.stDisponibilidadRequest:
+      properties:
+        Fecha:
+          description: "Fecha"
+          type: "string"
+          format: "date"
+        Hora:
+          description: "Hora"
+          type: "string"
+          format: "date-time"
+
+
+
+    Backend.stDisponibilidadResponse:
+      properties:
+        ErrorCode:
+          description: "Error Code"
+          type: "string"
+        ErrorDescription:
+          description: "Error Description"
+          type: "string"
+        stDisponibilidadMesa:
+          description: "st Disponibilidad Mesa"
+          type: array
+          items:
+            $ref: "#/components/schemas/Backend.stDisponibilidadMesa"
+
+
+
+    Backend.stReservacionRequest:
+      properties:
+        ReservacionFecha:
+          description: "Reservacion Fecha"
+          type: "string"
+          format: "date"
+        ReservacionHoraInicio:
+          description: "Reservacion Hora Inicio"
+          type: "string"
+          format: "date-time"
+        ClienteTelefono:
+          description: "Cliente Telefono"
+          type: "string"
+        ClienteNombre:
+          description: "Cliente Nombre"
+          type: "string"
+        ClienteCorreo:
+          description: "Cliente Correo"
+          type: "string"
+        MesaCodigo:
+          description: "Mesa Codigo"
+          type: "string"
+        ReservacionAdultos:
+          description: "Reservacion Adultos"
+          type: "integer"
+          format: "int32"
+        ReservacionNinos:
+          description: "Reservacion Ninos"
+          type: "integer"
+          format: "int32"
+        ReservacionToken:
+          description: "Reservacion Token"
+          type: "string"
+
+
+
+    Backend.stReservacionResponse:
+      properties:
+        ErrorCode:
+          description: "Error Code"
+          type: "string"
+        ErrorDescription:
+          description: "Error Description"
+          type: "string"
+        Reservacion:
+          description: "sr Reservacion"
+          $ref: "#/components/schemas/Backend.srReservacion"
+
+
+
+    Backend.srReservacion:
+      properties:
+        ReservacionId:
+          description: "Reservacion Id"
+          type: "integer"
+          format: "int32"
+        ReservacionFecha:
+          description: "Reservacion Fecha"
+          type: "string"
+          format: "date"
+        ReservacionHoraInicio:
+          description: "Reservacion Hora Inicio"
+          type: "string"
+          format: "date-time"
+        ClienteTelefono:
+          description: "Cliente Telefono"
+          type: "string"
+        ClienteNombre:
+          description: "Cliente Nombre"
+          type: "string"
+        ReservacionPax:
+          description: "Reservacion Pax"
+          type: "integer"
+          format: "int32"
+        MesaCodigo:
+          description: "Mesa Codigo"
+          type: "string"
+        MesaUbicacion:
+          description: "Ubicacion"
+          type: "string"
+          enum: ["Terraza", "Ventana", "SalonPrincipal"]
+          x-enum-varnames: [Terraza, Ventana, SalonPrincipal]
+        ReservacionEstatus:
+          description: "Reservacion Estatus"
+          type: "string"
+          enum: ["RESERVADA", "CONFIRMADA", "CANCELADA"]
+          x-enum-varnames: [Reservada, Confirmada, Cancelada]
+
+
+
+    Backend.stDisponibilidadMesa:
+      properties:
+        MesaCodigo:
+          description: "Mesa Codigo"
+          type: "string"
+        MesaCapacidad:
+          description: "Capacidad"
+          type: "integer"
+          format: "int32"
+        MesaUbicacion:
+          description: "Ubicacion"
+          type: "string"
+          enum: ["Terraza", "Ventana", "SalonPrincipal"]
+          x-enum-varnames: [Terraza, Ventana, SalonPrincipal]
+
+
+
+
