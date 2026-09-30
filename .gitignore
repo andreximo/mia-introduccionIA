@@ -9,8 +9,7 @@ wumpus
 04_goal_based_agent.py                                               
 05_utility_based_agent.py                                            
 06_learning_agent.py                                                 
-explanation.md                                                       
-README.md                                                            
+explanation.md                                                                                                                  
 requirements.txt
 classic_4x4.yaml
 classic_6x6.yaml
