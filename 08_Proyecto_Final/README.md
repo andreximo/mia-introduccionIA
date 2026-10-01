@@ -1,3 +1,12 @@
+# Información sobre el proyecto
+  - RAG: Se creo una base de datos vectorizada con un archivo de recetas de cocina de Gastronomía Mexicana. Una vez creada esta se carga cuando se lanza el proyecto.
+  - FastAPI: Se construyo el servicio del Agente-ReAct con FastAPI en cual se encarga de cargar la base vectorizada e inicializar las tools.
+  - MCP: Las tools se crearon utilizando el protocolo MCP, el cual consta de dos servidores y tres tools. El server de recetas con la base vecotizada, el cual tiene la tool buscar receta; y el server de reservación, este tiene dos tools, una para consultar las mesas disponibles y la otra para hacer una reservación.
+  - APIs externas, se creo un cliente REST para consumir la API del restaurante.
+  - UI: para la interacción con el agente se utilizo streamlit el cual permite intractuar con el agente.
+  - LLM: como motor de razonamiento se utilizó el modelo openai/gpt-oss-20b, el cual permite manejaruna ventana de contexto de 8000 tokens por minuto sobre la PAAS de GROQ.
+
+
 # Host multi-servidor MCP con ciclo ReAct
 
 Host expuesto como API REST (FastAPI) que se conecta a **múltiples servidores MCP**
